@@ -1,17 +1,33 @@
 package models;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+import static enums.Gender.Female;
+import static enums.Gender.Male;
+import static enums.Position.Cashier;
+
+public class Main {
+    public Main(){
+
+    }
+    public static void main(String[] args) throws IOException {
+        List<Products> newListOfProducts = new ArrayList<>();
+        newListOfProducts.add(new Products("Rice", 2000.00, 50));
+        newListOfProducts.add(new Products("Beans",2000.00, 10));
+        newListOfProducts.add(new Products("Milk", 100.00, 20));
+        newListOfProducts.add(new Products("Cereal",200.00, 10));
+        newListOfProducts.add(new Products("Noodles", 10000.00, 5));
+        newListOfProducts.add(new Products("Sugar", 100.00, 6));
+        List<Staff> newListOfStaff = new ArrayList<>();
+        newListOfStaff.add(new Staff("S001", "HOPE EGHOSA", 25, Male, "LAGOS", "OND", 50000, Cashier));
+        newListOfStaff.add(new Staff("S002", "OSAGIE HAPPINESS",21, Female, "ABUJA NIGERIA", "OLEVEL", 25000, Cashier));
+
+        List<Customers> newLisOfCustomers = new ArrayList<>();
+        newLisOfCustomers.add(new Customers("WISDOM DANIEL", "EDO", Male));
+        newLisOfCustomers.add(new Customers("OLESON DEBORAH", "ENUGU", Female));
+        newLisOfCustomers.add(new Customers("DAVID EMMANUEL", "ABUJA", Male));
+
     }
 }
