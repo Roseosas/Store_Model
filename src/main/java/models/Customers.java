@@ -2,10 +2,18 @@ package models;
 
 import enums.Gender;
 
-public class Customers extends Staff {
+import java.util.ArrayList;
+import java.util.List;
 
-    public Customers(String name, String address, Gender gender){
-        super(name, gender, address);
+public class Customers extends Users {
+    private double balance;
+    private List<Products> cart;
+
+    public Customers(String name, int age,  Gender gender, String address, double balance){
+
+        super(name, age, gender, address);
+        this.balance=balance;
+        this.cart=new ArrayList<>();
     }
 
 }

@@ -1,30 +1,39 @@
 package services.implementation;
 
 
-import models.Cashier;
+import enums.Position;
+import models.Staff;
 import services.ManagerService;
-import services.EmployeeAction;
 
 import java.util.List;
 
 public class ManagerServiceImplementation implements ManagerService{
-    private List<Cashier> cashiers;
-    @Override
-    public void hireCashier(Cashier cashier) {
-        cashier.add(cashier);
-        System.out.println(cashier.getName()+ " has been hired.");
+    private static List<Staff> staffList;
+    public boolean hireCashier(Staff manager, Staff cashier) {
+       if (manager.getPosition() != Position.Manager){
+           System.out.println("Only a Manager can hire a cashier." );
+           return false;
+       }
+        if (cashier.getPosition() != Position.Cashier|| cashier.getAge()<=20) {
+            System.out.println("Cannot hire cashier" + cashier.getAge()+ ": Must be above 20 years old.");
+            return false;
+        }
+        staffList.add(cashier);
+        System.out.println("Cashier "+ cashier.getName() + "has been hired by Manager "+ manager.getName()+".");
+        return true;
     }
-
-
-    @Override
-    public void fireCashier(Cashier cashier) {
-        cashier.remove(cashier);
-        System.out.println(cashier.getName()+ " has been fired.");
-    }
-    public void performDuties(){
-        System.out.println("Managing the store and overseeing operations.");
-    }
-    public List<Cashier> getCashiers(){
-        return cashiers;
+    public boolean fireCashier(Staff manager, Staff cashier){
+        if (manager.getPosition() != Position.Manager){
+            System.out.println("You are not a manager.");
+            return false;
+        }
+        if (cashier.getPerformingRating() <3){
+            staffList.remove(cashier);
+            System.out.println("Cashier "+ cashier.getName()+ "has been fired due to poor performance.");
+            return true;
+        }else {
+            System.out.println("Cashier"+ cashier.getName()+ " has a good performance record and cannot be fired.");
+            return  false;
+        }
     }
 }

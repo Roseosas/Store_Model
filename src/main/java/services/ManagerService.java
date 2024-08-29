@@ -1,11 +1,11 @@
 package services;
 
 
-
-import models.Cashier;
+import enums.Position;
+import models.Staff;
 
 public interface ManagerService {
-    void hireCashier(Cashier cashier);
+    boolean hireCashier(Staff manager, Staff cashier);
 
-    void fireCashier(Cashier cashier);
+    boolean fireCashier(Staff manager, Staff cashier);
 }
